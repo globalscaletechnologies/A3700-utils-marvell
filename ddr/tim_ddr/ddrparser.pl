@@ -6,6 +6,7 @@ sub parse_dram_data
 	my $ddr_type;
 	my $file;
 	my $line;
+	my $preset;
 	my $path = dirname(abs_path($file_name));
 
 	unless (open ($file, "<$file_name")) {
@@ -23,6 +24,10 @@ sub parse_dram_data
 		if ($name =~ m/ddr_type/) {
 			$ddr_type = $value;
 		}
+
+		if ($name =~ m/preset_ddr_conf/) {
+			$preset = $value;
+		}
 	}
 	close($file);
 
@@ -31,10 +36,14 @@ sub parse_dram_data
 	# to change some specific register, we could add "-r" option like below:
 	# ./ddr_tool -i DDR_TOPOLOGY_0.txt -o ddr_static.txt -r 0xC0000380=0x0007A120
 	# ddr_type	DDR3=0, DDR4=1
-	if ($ddr_type eq "0") {
-		system("${path}/ddr3_tool -i $file_name -o ${path}/ddr_static.txt");
-	} elsif ($ddr_type eq "1") {
-		system("${path}/ddr4_tool -i $file_name -o ${path}/ddr_static.txt");
+	if ($preset eq "") {
+		if ($ddr_type eq "0") {
+			system("${path}/ddr3_tool -i $file_name -o ${path}/ddr_static.txt");
+		} elsif ($ddr_type eq "1") {
+			system("${path}/ddr4_tool -i $file_name -o ${path}/ddr_static.txt");
+		}
+	} else {
+		system("/bin/cp ${path}/${preset} ${path}/ddr_static.txt");
 	}
 
 	unlink("${path}/clocks_ddr.txt");
