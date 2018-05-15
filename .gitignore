@@ -5,6 +5,7 @@ wtmi/build/*
 *.elf
 *.dis
 *.bin
+*.d
 #ignore specific files
 ddr_static.txt
 autoconf.h
