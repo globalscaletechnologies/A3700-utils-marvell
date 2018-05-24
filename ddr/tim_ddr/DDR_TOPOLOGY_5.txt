@@ -3,7 +3,7 @@
 # each item is one parameter for DDR topology, which will be parsed by
 # DDR tool and generate DDR register list accordingly.
 # Supported Marvell boards:
-#       DDR4 1CS : DB-88F3720-DDR4-Modular (512MB)
+#       DDR4 1CS : ESPRESSObin (1GB)
 #
 
 #DDR4
@@ -18,8 +18,8 @@ ddr_speedbin_index=10
 #16BIT
 ddr_bus_width_index=2
 
-#4Gbits (512MB)
-ddr_mem_size_index=3
+#8Gbits (1GB)
+ddr_mem_size_index=4
 
 #custom ddr setting
-preset_ddr_conf=ddr4-800-1cs-512m-issi.txt
+preset_ddr_conf=ddr4-1cs-1g.txt
