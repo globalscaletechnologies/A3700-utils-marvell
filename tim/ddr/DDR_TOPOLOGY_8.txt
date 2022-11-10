@@ -3,7 +3,7 @@
 # each item is one parameter for DDR topology, which will be parsed by
 # DDR tool and generate DDR register list accordingly.
 # Supported Marvell boards:
-#       DDR4 2CS : ESPERSSOBIN DDR4 (4GB)
+#       DDR4 2CS : ESPERSSOBIN-DDR4 dual K4AAG165WA-BCWE (4GB)
 #
 
 #DDR4
@@ -20,3 +20,6 @@ ddr_bus_width_index=2
 
 #16Gbits (2GB)
 ddr_mem_size_index=5
+
+#ddr preset config
+ddr_preset_conf=espressobin-ddr4-2cs-4g.txt
